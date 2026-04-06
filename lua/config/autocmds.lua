@@ -13,18 +13,11 @@ local f = function()
 end
 Config.new_autocmd("FileType", nil, f, "Proper 'formatoptions'")
 
--- highlight yanked text and cycle through numbered registers
+-- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking text, cycle numbered registers",
-	group = vim.api.nvim_create_augroup("highlight_yanked_text", { clear = true }),
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.hl.on_yank({ higroup = "IncSearch", timeout = 100 })
-		-- yank ring
-		-- credit: https://github.com/justinmk/config/blob/be345533e05db933baa587f901e08061de5579fa/.config/nvim/init.lua#L676
-		if vim.v.event.operator == "y" then
-			for i = 9, 1, -1 do -- Shift all numbered registers.
-				vim.fn.setreg(tostring(i), vim.fn.getreg(tostring(i - 1)))
-			end
-		end
+		vim.hl.on_yank()
 	end,
 })
