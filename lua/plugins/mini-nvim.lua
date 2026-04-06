@@ -12,5 +12,6 @@ return {
 				return string.format("🚀 Startup time: %.2fms", total_time)
 			end,
 		})
+		require("mini.pairs").setup()
 	end,
 }
