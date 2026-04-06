@@ -1,5 +1,5 @@
 vim.o.mouse = "a"
-vim.o.shortmess = "CFOSWaco"
+vim.o.shortmess = "CFOSWaco" -- Disable some built-in completion messages
 
 -- Enable all filetype plugins and syntax (if not enabled, for better startup)
 vim.cmd("filetype plugin indent on")
@@ -46,7 +46,7 @@ vim.o.smartindent = true
 
 -- ui
 vim.o.winborder = "rounded"
--- vim.o.pumborder = "rounded"
+vim.o.pumborder = "rounded"
 vim.o.cursorline = true -- highlight the text line of the cursor
 vim.o.number = true -- show numberline
 vim.o.relativenumber = true -- show relative numberline
@@ -99,6 +99,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 -- -- newer code
--- vim.schedule(function()
--- 	require("vim._core.ui2").enable({})
--- end)
+vim.schedule(function()
+	require("vim._core.ui2").enable({})
+end)
