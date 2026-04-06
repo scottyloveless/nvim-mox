@@ -1,17 +1,17 @@
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
-      dependencies = {
-    "rafamadriz/friendly-snippets",
-    -- add blink.compat to dependencies
-    -- {
-    --   "saghen/blink.compat",
-    --   optional = true, -- make optional so it's only enabled if any extras need it
-    --   opts = {},
-    --   version = not vim.g.lazyvim_blink_main and "*",
-    -- },
-  },
-  event = { "InsertEnter", "CmdlineEnter" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		-- add blink.compat to dependencies
+		-- {
+		--   "saghen/blink.compat",
+		--   optional = true, -- make optional so it's only enabled if any extras need it
+		--   opts = {},
+		--   version = not vim.g.lazyvim_blink_main and "*",
+		-- },
+	},
+	event = { "InsertEnter", "CmdlineEnter" },
 
 	-- use a release tag to download pre-built binaries
 	version = "1.*",
@@ -80,7 +80,7 @@ return {
 				["<Left>"] = false,
 			},
 			completion = {
-				list = { selection = { preselect = false } },
+				list = { selection = { preselect = true } },
 				menu = {
 					auto_show = function(ctx)
 						return vim.fn.getcmdtype() == ":"
