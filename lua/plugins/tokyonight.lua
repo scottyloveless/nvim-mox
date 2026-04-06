@@ -10,7 +10,7 @@ return {
 				-- floats = "transparent",
 				comments = { italic = false }, -- Disable italics in comments
 			},
-			-- cache = true,
+			cache = true,
 		})
 
 		-- Load the colorscheme here.
