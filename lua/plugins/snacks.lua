@@ -1,11 +1,34 @@
 return {
 	"folke/snacks.nvim",
 	---@type snacks.Config
-	opts = {
-		lazygit = {
-			-- your lazygit configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
+	keys = {
+
+		{
+			"<leader>bs",
+			function()
+				Snacks.scratch()
+			end,
+			desc = "Toggle Scratch Buffer",
+		},
+		{
+			"<leader>sS",
+			function()
+				Snacks.scratch.select()
+			end,
+			desc = "Select Scratch Buffer",
+		},
+		{
+			-- snacks
+			---@param opts? snacks.lazygit.Config
+			"<leader>gl",
+			function()
+				Snacks.lazygit.open(opts)
+			end,
+			desc = "[l]azy[g]it",
+		},
+		opts = {
+			lazygit = {},
+			scratch = {},
 		},
 	},
 }

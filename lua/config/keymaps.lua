@@ -34,6 +34,7 @@ nmap_leader("sc", builtin.commands, "[s]earch [c]ommands")
 nmap_leader("<leader>", builtin.buffers, "[␣] Find existing buffers")
 vim.keymap.set({ "n", "v" }, "<leader>sw", builtin.grep_string, { desc = "[s]earch current [w]ord" })
 
--- snacks
----@param opts? snacks.lazygit.Config
-nmap_leader("gl", "<cmd>lua Snacks.lazygit.open(opts)<CR>", "[l]azy[g]it")
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
