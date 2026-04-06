@@ -36,4 +36,4 @@ vim.keymap.set({ "n", "v" }, "<leader>sw", builtin.grep_string, { desc = "[s]ear
 
 -- snacks
 ---@param opts? snacks.lazygit.Config
-nmap_leader("gl", "<cmd>lua Snacks.lazygit.open()<CR>", "[l]azy[g]it")
+nmap_leader("gl", "<cmd>lua Snacks.lazygit.open(opts)<CR>", "[l]azy[g]it")
