@@ -1,29 +1,39 @@
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>") -- clear search highlights
+local nmap = function(lhs, rhs, desc)
+	-- See `:h vim.keymap.set()`
+	vim.keymap.set("n", lhs, rhs, { desc = desc })
+end
 
-vim.keymap.set("n", "<leader>ul", ":set list!<CR>", { desc = "Toggle WhiteSpace" })
+local nmap_leader = function(suffix, rhs, desc)
+	vim.keymap.set("n", "<Leader>" .. suffix, rhs, { desc = desc })
+end
+
+nmap("<Esc>", "<cmd>nohlsearch<CR>") -- clear search highlights
+
+nmap_leader("ul", ":set list!<CR>", "Toggle WhiteSpace")
 
 -- MiniFiles ====================
-vim.keymap.set("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>", { desc = "open MiniFiles" })
+nmap_leader("e", "<cmd>lua MiniFiles.open()<CR>", "[e]xplorer")
 
 -- Telescope ====================
 local builtin = require("telescope.builtin")
 -- searching
-vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "files" })
-vim.keymap.set("n", "<leader>s/", builtin.live_grep, { desc = "grep" })
-vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[h]elp" })
-vim.keymap.set("n", "<leader>sv", builtin.vim_options, { desc = "[v]im options" })
-vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[f]ind [k]eymaps" })
-vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[s]earch [s]elect Telescope" })
--- lsp
-vim.keymap.set("n", "<leader>dd", builtin.diagnostics, { desc = "[d]iagnostics" })
--- ui
-vim.keymap.set("n", "<leader>uC", builtin.colorscheme, { desc = "[C]olorscheme" })
-
-vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[s]earch [s]elect Telescope" })
+nmap_leader("sf", builtin.find_files, "files")
+nmap_leader("s/", builtin.live_grep, "grep")
+nmap_leader("sh", builtin.help_tags, "[h]elp")
+nmap_leader("sv", builtin.vim_options, "[v]im options")
+nmap_leader("sk", builtin.keymaps, "[f]ind [k]eymaps")
+nmap_leader("ss", builtin.builtin, "[s]earch [s]elect Telescope")
+nmap_leader("dd", builtin.diagnostics, "[d]iagnostics")
+nmap_leader("uC", builtin.colorscheme, "[C]olorscheme")
+nmap_leader("ss", builtin.builtin, "[s]earch [s]elect Telescope")
+nmap_leader("sg", builtin.live_grep, "[s]earch by [g]rep")
+nmap_leader("sd", builtin.diagnostics, "[s]earch [d]iagnostics")
+nmap_leader("sr", builtin.resume, "[s]earch [r]esume")
+nmap_leader("s.", builtin.oldfiles, '[s]earch Recent Files ("." for repeat)')
+nmap_leader("sc", builtin.commands, "[s]earch [c]ommands")
+nmap_leader("<leader>", builtin.buffers, "[␣] Find existing buffers")
 vim.keymap.set({ "n", "v" }, "<leader>sw", builtin.grep_string, { desc = "[s]earch current [w]ord" })
-vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch by [g]rep" })
-vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
-vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[s]earch [r]esume" })
-vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[s]earch Recent Files ("." for repeat)' })
-vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[s]earch [c]ommands" })
-vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
+-- snacks
+---@param opts? snacks.lazygit.Config
+nmap_leader("gl", "<cmd>lua Snacks.lazygit.open()<CR>", "[l]azy[g]it")
