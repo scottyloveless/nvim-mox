@@ -18,6 +18,8 @@ end
 
 vim.opt.undodir = undodir
 
+vim.o.inccommand = "split"
+
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
