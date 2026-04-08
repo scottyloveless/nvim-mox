@@ -65,15 +65,15 @@ return {
 
 				-- Rename the variable under your cursor.
 				--  Most Language Servers support renaming across files, etc.
-				map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("grn", vim.lsp.buf.rename, "[r]e[n]ame")
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
-				map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+				map("gra", vim.lsp.buf.code_action, "[g]oto Code [a]ction", { "n", "x" })
 
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header.
-				map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				map("grD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
 
 				-- The following two autocommands are used to highlight references of the
 				-- word under your cursor when your cursor rests there for a little while.
@@ -109,9 +109,9 @@ return {
 				--
 				-- This may be unwanted, since they displace some of your code
 				if client and client:supports_method("textDocument/inlayHint", event.buf) then
-					map("<leader>th", function()
+					map("<leader>uh", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-					end, "[T]oggle Inlay [H]ints")
+					end, "[h]ints")
 				end
 			end,
 		})

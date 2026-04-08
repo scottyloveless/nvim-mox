@@ -32,7 +32,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
 	config = function()
-		-- Telescope is a fuzzy finder that comes with a lot of different things that
+		-- Telescope is a uzzy finder that comes with a lot of different things that
 		-- it can fuzzy find! It's more than just a "file finder", it can search
 		-- many different aspects of Neovim, your workspace, LSP, and more!
 		--
@@ -136,20 +136,20 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				winblend = 10,
 				previewer = false,
 			}))
-		end, { desc = "[/] Fuzzily search in current buffer" })
+		end, { desc = "fzf buffer" })
 
 		-- It's also possible to pass additional configuration options.
 		--  See `:help telescope.builtin.live_grep()` for information about particular keys
-		vim.keymap.set("n", "<leader>s/", function()
+		vim.keymap.set("n", "<leader>f/", function()
 			builtin.live_grep({
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
 			})
-		end, { desc = "[S]earch [/] in Open Files" })
+		end, { desc = "grep open files" })
 
 		-- Shortcut for searching your Neovim configuration files
-		vim.keymap.set("n", "<leader>sn", function()
+		vim.keymap.set("n", "<leader>fn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "[S]earch [N]eovim files" })
+		end, { desc = "neovim files" })
 	end,
 }
