@@ -32,7 +32,7 @@ return {
 	{
 		"nvim-mini/mini.pairs",
 		version = false,
-		lazy = false,
+		lazy = true,
 		opts = {
 			modes = {
 				insert = true,
